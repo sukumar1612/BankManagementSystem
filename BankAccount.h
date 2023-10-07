@@ -1,10 +1,9 @@
 #pragma once
 #include "Account.h"
-using namespace std;
 
 class BankAccount : public Account {
 private:
-    string name;
+    std::string name;
     int accountNumber;
     int balance;
 public:

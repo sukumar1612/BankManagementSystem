@@ -1,31 +1,29 @@
 #include "BankAccount.h"
 #include<iostream>
-using namespace std;
-
 
 void BankAccount::openAccount() {
-    cout << "Enter Name: "; cin >> name;
-    cout << "Enter Account Number: "; cin >> accountNumber;
-    cout << "Enter Balance: "; cin >> balance;
+    std::cout << "Enter Name: "; std::cin >> name;
+    std::cout << "Enter Account Number: "; std::cin >> accountNumber;
+    std::cout << "Enter Balance: "; std::cin >> balance;
 }
 
 void BankAccount::showAccount() const {
-    cout << "Name: " << name << endl;
-    cout << "Account Number: " << accountNumber << endl;
-    cout << "Balance: " << balance << endl;
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Account Number: " << accountNumber << std::endl;
+    std::cout << "Balance: " << balance << std::endl;
 }
 
 void BankAccount::deposit() {
     int amount;
-    cout << "Enter Amount to Deposit: "; cin >> amount;
+    std::cout << "Enter Amount to Deposit: "; std::cin >> amount;
     balance += amount;
 }
 
 void BankAccount::withdraw() {
     int amount;
-    cout << "Enter Amount to Withdraw: "; cin >> amount;
+    std::cout << "Enter Amount to Withdraw: "; std::cin >> amount;
     if(amount <= balance) balance -= amount;
-    else cout << "Insufficient Balance!" << endl;
+    else std::cout << "Insufficient Balance!" << std::endl;
 }
 
 bool BankAccount::search(int a) const {

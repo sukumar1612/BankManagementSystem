@@ -3,6 +3,6 @@ project(BankManagementSystem)
 
 set(CMAKE_CXX_STANDARD 17)
 
-file(GLOB SOURCES "*.cpp")
+file(GLOB SOURCES "*.cpp" "*.h")
 
 add_executable(BankManagementSystem ${SOURCES})

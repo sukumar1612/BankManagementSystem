@@ -1,8 +1,9 @@
 #include<iostream>
+#include<vector>
 #include "AccountFactory.h"
 
-int findAccount(Account* accounts[], int n, int accountNumber) {
-    for(int i = 0; i < n; i++) {
+int findAccount(const std::vector<Account*>& accounts, int accountNumber) {
+    for(int i = 0; i < accounts.size(); i++) {
         if(accounts[i]->getAccountNumber() == accountNumber) {
             accounts[i]->showAccount();
             return i;
@@ -12,9 +13,8 @@ int findAccount(Account* accounts[], int n, int accountNumber) {
 }
 
 int main() {
-    Account* accounts[10];
+    std::vector<Account*> accounts;
     int choice;
-    int n = 0;
     do {
         std::cout << "1. Open Account\n";
         std::cout << "2. Deposit Money\n";
@@ -24,14 +24,13 @@ int main() {
         std::cout << "Select option: "; std::cin >> choice;
         switch(choice) {
             case 1:
-                accounts[n] = AccountFactory::createAccount();
-                accounts[n]->openAccount();
-                n++;
+                accounts.push_back(AccountFactory::createAccount());
+                accounts.back()->openAccount();
                 break;
             case 2: {
                 int accountNumber;
                 std::cout << "Enter Account Number: "; std::cin >> accountNumber;
-                int index = findAccount(accounts, n, accountNumber);
+                int index = findAccount(accounts, accountNumber);
                 if(index != -1) {
                     accounts[index]->deposit();
                 } else {
@@ -42,7 +41,7 @@ int main() {
             case 3: {
                 int accountNumber;
                 std::cout << "Enter Account Number: "; std::cin >> accountNumber;
-                int index = findAccount(accounts, n, accountNumber);
+                int index = findAccount(accounts, accountNumber);
                 if(index != -1) {
                     accounts[index]->withdraw();
                 } else {
@@ -53,7 +52,7 @@ int main() {
             case 4: {
                 int accountNumber;
                 std::cout << "Enter Account Number: "; std::cin >> accountNumber;
-                int index = findAccount(accounts, n, accountNumber);
+                int index = findAccount(accounts, accountNumber);
                 if(index == -1) {
                     std::cout << "Account Not Found!\n";
                 }
